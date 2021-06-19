@@ -8,7 +8,7 @@ listings_url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/lat
 
 headers = {
   'Accepts': 'application/json',
-  'X-CMC_PRO_API_KEY': 'dc139d27-6afa-4ebb-9bf2-3c39229faf40'
+  'X-CMC_PRO_API_KEY': 'YOUR_API_KEY'
 }
 parameters={
     'convert':'INR'
