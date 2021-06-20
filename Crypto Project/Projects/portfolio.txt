@@ -1,0 +1,9 @@
+xrp 23.0
+matic 15.0
+bat 20.0
+doge 150.0
+zrx 67.64
+xlm 78.8
+trx 200.0
+xem 55.0
+btt 1434.0
