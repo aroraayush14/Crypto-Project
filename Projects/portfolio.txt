@@ -1,9 +1,5 @@
-xrp 23.0
-matic 15.0
-bat 20.0
-doge 150.0
-zrx 67.64
-xlm 78.8
-trx 200.0
-xem 55.0
-btt 1434.0
+shib 277302.9
+axs 0.08991
+ont 9.99
+busd 0.15344
+bnb 0.0000406

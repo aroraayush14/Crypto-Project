@@ -7,12 +7,13 @@ url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 sy = input('Enter Symbol:')
 sy = sy.lower()
 parameters = {
-    'symbol':sy
+    'symbol':sy,
+    'convert':'USD'
 }
 
 request = requests.get(url, headers = {
   'Accepts': 'application/json',
-  'X-CMC_PRO_API_KEY': 'YOUR_API_KEY',
+  'X-CMC_PRO_API_KEY': 'dc139d27-6afa-4ebb-9bf2-3c39229faf40',
 } ,params = parameters)
 
 results = request.json()

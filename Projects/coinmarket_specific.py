@@ -34,38 +34,24 @@ for currency in data:
     symbol = currency['symbol']
     url = currency['id']
     ticker_url_pairs[symbol] = url
-# print(symbol)
-# print(ticker_url_pairs)
-print()
-print('My Portfolio')
-print('--------------')
-print()
 
-portfolio_value = 0.00
-convert = 'INR'
-last_updated = 0
-
-table = PrettyTable(['Asset','Amount Owned', 'INR Value','Price','1h','24h','7d'])
-
-with open('portfolio.txt') as inp:
-    for line in inp:
-        ticker, amount = line.split()
-        ticker = ticker.upper()
+choice = input('Enter slug:')
+choice = choice.upper()
+table = PrettyTable(['Asset','Price','1h','24h','7d'])
+if choice in ticker_url_pairs:
         for i in range(len(data)):
-            if data[i]['symbol'] == ticker:
+            if data[i]['symbol'] == choice:
                 currency = data[i]
                 rank = currency['cmc_rank']
                 name = currency['name']
                 last_updated = currency['last_updated']
                 symbol = currency['symbol']
-                quotes = currency['quote'][convert]
+                quotes = currency['quote']['INR']
                 hour_change = quotes['percent_change_1h']
                 day_change = quotes['percent_change_24h']
                 week_change = quotes['percent_change_7d']
                 price = quotes['price']
 
-
-                value = float(price) * float(amount)
 
 
                 if hour_change > 0:
@@ -84,25 +70,16 @@ with open('portfolio.txt') as inp:
                 else:
                     week_change = Fore.RED + str(week_change) + '%' + Style.RESET_ALL
 
-        portfolio_value += value
+                table.add_row([name + '(' + symbol + ')',
+                '₹ ' + str(price),
+                str(hour_change),
+                str(day_change),
+                 str(week_change)])
 
-        value_string = '{:,}'.format(round(value,2))
+print()
+print('Ticker: '+ choice)
+print('--------------')
+print()
 
-        table.add_row([name + '(' + symbol + ')',
-        amount,
-        '₹ ' + value_string,
-        '₹ ' + str(price),
-        str(hour_change),
-        str(day_change),
-        str(week_change)])
 
 print(table)
-print()
-
-portfolio_value_string = '{:,}'.format(round(portfolio_value,2))
-last_updated_string =  str(last_updated.split('T'))
-
-print('Total Portfolio Value : ' + Fore.GREEN + '₹' + portfolio_value_string + Style.RESET_ALL)
-print()
-print('API Results Last Updated on : ' + last_updated_string + Style.RESET_ALL)
-print()
